@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Tata Memorial Hospital | Guided MRI Screening</title>
+<style>
+:root{--ink:#243447;--muted:#657789;--line:#dbe5e9;--bg:#f3f7f8;--teal:#247c7a;--tealD:#1b6261;--pale:#e8f5f3;--blue:#edf4fb;--amber:#fff4d9;--amberInk:#81550a;--red:#fff0ef;--redInk:#9b302a;--green:#eaf7ee;--greenInk:#22683a}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.48 system-ui,-apple-system,"Segoe UI",sans-serif}
+header{background:#fff;border-bottom:1px solid var(--line)}.head{max-width:1050px;margin:auto;padding:16px 20px;display:flex;gap:12px;align-items:center}.logo{width:44px;height:44px;border-radius:13px;background:var(--pale);display:grid;place-items:center;color:var(--teal);font-weight:900}.brand{font-size:13px;font-weight:850;letter-spacing:.04em}.subbrand{font-size:12px;color:var(--muted)}
+main{max-width:900px;margin:25px auto 50px;padding:0 16px}.hero{margin-bottom:17px}h1{font-size:clamp(26px,4vw,35px);line-height:1.15;letter-spacing:-.035em;margin:0}h2{font-size:20px;margin:0 0 5px;letter-spacing:-.02em}h3{font-size:15px;margin:0 0 8px}.muted{color:var(--muted);font-size:13px}.notice{border:1px solid #d7e5f4;background:var(--blue);border-radius:13px;padding:13px 15px;font-size:13px;color:#31516c;margin:15px 0}.notice strong{display:block;color:#23435f;margin-bottom:3px}
+.card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:22px;box-shadow:0 8px 25px #22394b0a;margin-bottom:16px}.progressrow{display:flex;justify-content:space-between;gap:10px;align-items:center;margin-bottom:9px;font-size:12px;color:var(--muted);font-weight:700}.progress{height:7px;background:#e8eef0;border-radius:99px;overflow:hidden;margin-bottom:22px}.bar{height:100%;width:0;background:var(--teal);transition:width .2s}
+.fieldgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.field.full{grid-column:1/-1}label.fieldlabel{display:block;font-size:12px;font-weight:750;color:#4c6072;margin-bottom:6px}
+input[type=text],input[type=number],input[type=date],select,textarea{width:100%;border:1px solid #cdd9df;border-radius:10px;background:#fff;padding:11px 12px;color:var(--ink);font:inherit;font-size:14px;min-height:43px;outline:none}textarea{min-height:84px;resize:vertical}input:focus,select:focus,textarea:focus{border-color:var(--teal);box-shadow:0 0 0 3px #247c7a20}
+.questiongrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.questioncard{border:1px solid #e1e9ec;border-radius:13px;padding:14px;min-width:0}.questioncard .choice span{min-height:43px}.qnum{font-size:12px;color:var(--teal);font-weight:850;text-transform:uppercase;letter-spacing:.08em;margin-bottom:10px}.qtitle{font-size:clamp(21px,3.4vw,28px);font-weight:780;line-height:1.22;letter-spacing:-.025em;margin-bottom:8px}.qhelp{color:var(--muted);font-size:14px;margin-bottom:22px}
+.choicegrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}.choice{position:relative}.choice input{position:absolute;opacity:0;pointer-events:none}.choice span{display:flex;align-items:center;justify-content:center;gap:8px;border:1px solid #d4dfe4;border-radius:12px;min-height:62px;background:#fff;font-weight:800;cursor:pointer}.choice span:before{content:"";width:13px;height:13px;border:1.5px solid #a7b7c0;border-radius:50%}.choice input:checked+span{border-color:var(--teal);background:var(--pale);color:var(--tealD)}.choice input:checked+span:before{border:4px solid var(--teal)}.choice.yes input:checked+span{border-color:#e2a19d;background:var(--red);color:var(--redInk)}.choice.unsure input:checked+span{border-color:#e4c577;background:var(--amber);color:var(--amberInk)}.choice input:focus-visible+span{outline:3px solid #247c7a40}
+.followup{margin-top:20px;padding-top:18px;border-top:1px solid var(--line);display:none}.followup.show{display:block}.followup label{display:block;font-size:12px;font-weight:750;color:#4c6072;margin:0 0 6px}.hint{font-size:12px;color:var(--muted);margin-top:7px}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}button{border:0;border-radius:11px;padding:12px 17px;font:inherit;font-size:13px;font-weight:800;cursor:pointer}.primary{background:var(--teal);color:white}.primary:hover{background:var(--tealD)}.secondary{background:white;color:#375268;border:1px solid #cedbe0}.danger{background:var(--red);color:var(--redInk);border:1px solid #f0d1cf}button:disabled{opacity:.4;cursor:not-allowed}
+#patientFlow{display:block}.hidden{display:none!important}.mini{font-size:11px;color:var(--muted);margin-top:12px}.required{color:#b54842}
+.bodygrid{display:grid;grid-template-columns:minmax(170px,230px) minmax(0,1fr);gap:22px;align-items:start}.bodyfigure{background:#f8fbfc;border:1px solid #e1eaed;border-radius:14px;padding:12px;text-align:center}.bodyfigure svg{width:100%;max-height:370px;touch-action:manipulation}.bodyfigure .part{fill:#e4eff1;stroke:#86a6ad;stroke-width:2;cursor:pointer;transition:fill .15s,stroke .15s}.bodyfigure .part:hover{fill:#cbe8e4}.bodyfigure .part.selected{fill:#36aaa0;stroke:#176d69;stroke-width:3}.bodyfigure .part:focus{outline:none;stroke:#173f63;stroke-width:4}.legend{font-size:11px;color:var(--muted);margin-top:7px}.partlist{display:flex;flex-wrap:wrap;gap:7px;margin:10px 0 16px}.pill{display:inline-flex;gap:7px;align-items:center;background:var(--pale);border:1px solid #c8e4df;border-radius:999px;padding:6px 10px;font-size:12px;font-weight:700}.pill button{padding:0;background:transparent;color:var(--tealD);font-size:15px}
+.resultbox{padding:15px;border:1px solid #e7d8b1;background:#fffbef;border-radius:13px;margin-top:15px}.status{display:inline-block;border-radius:999px;padding:5px 9px;background:var(--amber);color:var(--amberInk);font-size:11px;font-weight:850}.resultbox ul{margin-bottom:0;padding-left:20px;font-size:13px}.staffonly{border:2px solid #d5e6e3}.staffbanner{background:var(--pale);border-radius:12px;padding:12px;font-size:13px;margin-bottom:16px}.staffgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.checkline{display:flex;gap:9px;align-items:flex-start;font-size:13px;margin-top:12px}.checkline input{margin-top:4px;accent-color:var(--teal)}.instructions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.instruction{background:#f8fbfc;border:1px solid #e4ecef;border-radius:12px;padding:12px;font-size:12px}.instruction strong{display:block;margin-bottom:4px;font-size:13px}.instruction p{margin:0;color:var(--muted)}.footer{text-align:center;color:#83919d;font-size:11px;padding:12px}
+@media(max-width:760px){.questiongrid{grid-template-columns:1fr}}\n@media(max-width:600px){.card{padding:17px}.fieldgrid,.staffgrid,.instructions{grid-template-columns:1fr}.field.full{grid-column:auto}.choicegrid{gap:6px}.choice span{min-height:58px;font-size:13px;flex-direction:column;gap:3px}.bodygrid{grid-template-columns:1fr}.bodyfigure svg{max-height:300px}.actions button{flex:1}.qtitle{font-size:23px}}
+@media print{body{background:white}.head{padding:8px 0}main{margin:10px auto;padding:0}.card{box-shadow:none;break-inside:avoid}.actions{display:none!important}#patientFlow,#summary,#staffReview,main>.hero,main>.notice,main>section.card:not(#printSummary),.footer{display:none!important}#printSummary{display:block!important;border:0!important;box-shadow:none!important}}
+</style></head>
+<body>
+<header><div class="head"><div class="logo">MRI</div><div><div class="brand">TATA MEMORIAL HOSPITAL</div><div class="subbrand">Dr. E. Borges Marg, Parel, Mumbai – 400012</div></div></div></header>
+<main>
+<div class="hero"><h1>MRI Patient Screening</h1><p class="muted">A guided questionnaire for patients, followed by a separate staff review.</p></div>
+<div class="notice"><strong>Important MRI safety information</strong>This form does not decide whether MRI is safe for you. Tell MRI staff if you are unsure. Do not enter the MRI room until staff have completed the required safety checks.</div>
+
+<section id="patientFlow"><div id="singlePageForm"></div><div class="actions"><button class="primary" id="reviewBtn" type="button">Generate staff review summary</button><button class="secondary" id="printAllBtn" type="button">Print / Save PDF</button><button class="danger" id="clearBtn" type="button">Clear form</button></div><div class="mini">Single-page form for staff review. Your answers stay in this browser tab and are not sent to a server.</div></section>
+
+<section id="summary" class="card hidden" aria-live="polite">
+  <h2>Patient questionnaire summary</h2><p class="muted">Please review the answers with MRI staff. This is not MRI clearance.</p>
+  <div id="patientSummary"></div>
+  <div class="actions"><button class="primary" id="staffBtn" type="button">Open staff review</button><button class="secondary" id="editBtn" type="button">Edit answers</button><button class="secondary" id="printBtn" type="button">Print / Save PDF</button></div>
+</section>
+
+<section id="staffReview" class="card staffonly hidden">
+  <h2>Staff review</h2><p class="muted">For authorised MRI staff. Verify every flagged response and document the outcome under local MRI safety policy.</p>
+  <div class="staffbanner"><strong>Safety rule:</strong> A patient questionnaire cannot establish device MR safety. Confirm exact device identity, model, conditions and required documentation using approved resources and local policy.</div>
+  <div id="staffAlerts"></div>
+  <div class="staffgrid">
+    <div><label class="fieldlabel" for="staffName">Technologist / nurse reviewer</label><input id="staffName" type="text"></div>
+    <div><label class="fieldlabel" for="doctorName">Radiologist / doctor reviewer</label><input id="doctorName" type="text"></div>
+    <div class="field full"><label class="fieldlabel" for="staffNotes">Review notes / device verification details</label><textarea id="staffNotes" placeholder="Document follow-up, device details, records checked and escalation as per local protocol"></textarea></div>
+    <div class="field full"><label class="fieldlabel" for="disposition">Staff assessment status</label><select id="disposition"><option value="">Select status</option><option>Pending further assessment</option><option>Escalated to MRI safety lead / radiologist</option><option>Assessment documented according to local protocol</option></select><div class="hint">This selection records staff documentation only. It does not independently authorise a scan.</div></div>
+  </div>
+  <label class="checkline"><input id="staffConfirmed" type="checkbox"><span>I have reviewed the questionnaire and followed the applicable MRI safety workflow. I understand this checkbox alone is not a device-safety determination.</span></label>
+  <div class="actions"><button class="primary" id="staffPrintBtn" type="button">Print staff review</button><button class="secondary" id="backSummaryBtn" type="button">Back to summary</button></div>
+</section>
+
+<section class="card hidden" id="printSummary"><h2>MRI Patient Screening — Print Summary</h2><div id="printContent"></div><p class="muted">Screening summary only. MRI staff must complete and document safety assessment before proceeding.</p></section>
+
+<section class="card">
+  <h2>Patient instructions</h2><p class="muted">Instructions transcribed from the supplied hospital screening form; confirm against the specific scan and current local protocol.</p>
+  <div class="instructions">
+    <div class="instruction"><strong>Food and medicines</strong><p>No fasting for routine MRI except MRCP or studies under sedation/anesthesia. Other patients can take prescribed medicines and a light meal.</p></div>
+    <div class="instruction"><strong>Attendant</strong><p>One attendant is compulsory for contrast-enhanced studies.</p></div>
+    <div class="instruction"><strong>Remove metal items</strong><p>Remove metal, jewellery, glasses, hairpins, dentures, hearing aids and clothing with metal buttons; wear a hospital gown.</p></div>
+    <div class="instruction"><strong>Personal items</strong><p>Keep cards, mobile phones and watches out of the MRI room.</p></div>
+    <div class="instruction"><strong>Previous scans</strong><p>Bring old scan films and CDs for radiologist review and comparison.</p></div>
+    <div class="instruction"><strong>Waiting time</strong><p>Waiting may increase due to emergencies. MRI scan time is usually 30–60 minutes depending on the study.</p></div>
+  </div>
+</section>
+<div class="footer">Guided MRI screening prototype · Based on supplied MRI Screening Form v1.0 dated 23.7.25 · Not a validated clinical system</div>
+</main>
+<script>
+const questions=[
+{id:"pacemaker",q:"Do you have a cardiac pacemaker or defibrillator?",follow:"If yes, provide device details if known."},
+{id:"cochlear",q:"Do you have a cochlear implant or hearing aid?",follow:"A hearing aid must be removed before entering the MRI room. For an implant, provide the device name/model if known."},
+{id:"aneurysm",q:"Have you had an aneurysm coil or clip inserted?",follow:"If yes, describe the procedure, approximate date and device details if known."},
+{id:"stent",q:"Do you have any stent, filter or coil inside your body?",follow:"Describe the body location, procedure date and device details if known."},
+{id:"pump",q:"Do you have an implanted drug pump?",help:"For example, a chemotherapy, pain-management or insulin pump.",follow:"Describe the pump type, location and model if known."},
+{id:"neurostimulator",q:"Do you have a neurostimulator?",follow:"Describe the device, location and model if known."},
+{id:"orthopedic",q:"Do you have an orthopaedic implant or hardware?",follow:"Describe the body part, type of implant and surgery date if known."},
+{id:"dental",q:"Do you have a dental implant or other dental hardware?",follow:"Describe the item if known."},
+{id:"prosthesis",q:"Do you have any prosthesis?",help:"For example, an eye, penile or other prosthesis.",follow:"Describe the type and location."},
+{id:"electrodes",q:"Do you have internal electrodes or wires?",help:"For example, a Swan-Ganz catheter.",follow:"Describe the type, location and whether it is currently in place."},
+{id:"metallicInjury",q:"Have you ever had a metal injury to your body or eye?",follow:"Describe the injury, location and whether metal was removed or remains."},
+{id:"tattoo",q:"Do you have a tattoo or body piercing?",follow:"Describe the location. Remove removable piercings according to MRI staff instructions."},
+{id:"metalClothing",q:"Are you wearing clothing that may contain metal?",follow:"MRI staff will advise you about changing into a hospital gown."},
+{id:"pregnancy",q:"Are you pregnant, or could you be pregnant?",follow:"If yes or unsure, tell MRI staff so the appropriate clinical assessment can be made."},
+{id:"contrastAllergy",q:"Have you had an allergy or reaction to MRI contrast before?",follow:"Describe the reaction, when it happened and any treatment required. Staff should clarify which contrast agent was involved."},
+{id:"kidneyDisease",q:"Do you have kidney disease or a history of kidney surgery or kidney cancer?",help:"The current paper form also mentions diabetes in this question; the staff workflow should clarify renal history and relevant tests according to local contrast policy.",follow:"Describe the condition, surgery or recent kidney-function information if known. Staff should assess according to local contrast policy."},
+{id:"dialysis",q:"Are you currently receiving dialysis?",follow:"If yes, tell staff the dialysis type and schedule so the clinical team can plan appropriately."}
+];
+const sections=[
+{title:"Patient details",kind:"details"},
+{title:"Implants and devices",kind:"questions",ids:["pacemaker","cochlear","aneurysm","stent","pump","neurostimulator","orthopedic","dental","prosthesis","electrodes"]},
+{title:"Metal exposure and other safety questions",kind:"questions",ids:["metallicInjury","tattoo","metalClothing","pregnancy","contrastAllergy","kidneyDisease","dialysis"]},
+{title:"Implant location and declaration",kind:"body"},
+{title:"Review answers",kind:"review"}
+];
+let answers={}, followups={}, selectedParts=new Set();
+const bodyParts=[
+["head","Head / brain"],["eyes","Eyes / face"],["neck","Neck"],["chest","Chest"],["abdomen","Abdomen"],["pelvis","Pelvis"],
+["rightShoulder","Right shoulder"],["leftShoulder","Left shoulder"],["rightArm","Right arm"],["leftArm","Left arm"],
+["rightHand","Right hand"],["leftHand","Left hand"],["rightLeg","Right thigh / leg"],["leftLeg","Left thigh / leg"],
+["rightFoot","Right foot"],["leftFoot","Left foot"]];
+const $=id=>document.getElementById(id);
+function esc(s){return String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));}
+function partLabel(id){return bodyParts.find(p=>p[0]===id)?.[1]||id;}
+function field(id,label,type="text",placeholder=""){return `<div class="field"><label class="fieldlabel" for="${id}">${label}</label><input id="${id}" type="${type}" placeholder="${placeholder}" value="${esc(answers[id]||"")}"></div>`;}
+function renderSinglePage(){
+ const host=$("singlePageForm");
+ let out=`<section class="card"><div class="qnum">SECTION 1</div><h2>Patient details</h2><p class="muted">Enter identifying and appointment information.</p><div class="fieldgrid">
+ <div class="field full"><label class="fieldlabel" for="patientName">Patient name <span class="required">*</span></label><input id="patientName" type="text" value="${esc(answers.patientName||"")}" autocomplete="name" placeholder="Full name"></div>
+ ${field("caseNo","Case number")}${field("screenDate","Screening date","date")}${field("age","Age","number","Age in years")}
+ <div class="field"><label class="fieldlabel" for="sex">Sex</label><select id="sex"><option value="">Select</option>${["Female","Male","Intersex","Prefer not to say"].map(x=>`<option ${answers.sex===x?"selected":""}>${x}</option>`).join("")}</select></div>
+ ${field("weight","Weight (kg)","number","Weight in kg")}${field("occupation","Occupation")}${field("lmp","Last menstrual period (if applicable)","text","Date or not applicable")}
+ </div></section>`;
+ const groups=[
+ {title:"Implants and devices",ids:["pacemaker","cochlear","aneurysm","stent","pump","neurostimulator","orthopedic","dental","prosthesis","electrodes"]},
+ {title:"Metal exposure and other safety questions",ids:["metallicInjury","tattoo","metalClothing","pregnancy","contrastAllergy","kidneyDisease","dialysis"]}
+ ];
+ groups.forEach((g,gi)=>{
+ out+=`<section class="card"><div class="qnum">SECTION ${gi+2}</div><h2>${g.title}</h2><p class="muted">Select Yes, No or Unsure. Positive and uncertain answers need discussion with MRI staff.</p><div class="questiongrid">`;
+ g.ids.forEach(id=>{const q=questions.find(x=>x.id===id);out+=`<div class="questioncard"><div class="qtitle">${esc(q.q)}</div>${q.help?`<div class="muted" style="margin:4px 0 10px">${esc(q.help)}</div>`:""}<div class="choicegrid" role="group" aria-label="${esc(q.q)}">${[["yes","Yes","yes"],["no","No",""],["unsure","Unsure","unsure"]].map(([v,l,c])=>`<label class="choice ${c}"><input type="radio" name="${q.id}" value="${v}" ${answers[q.id]===v?"checked":""}><span>${l}</span></label>`).join("")}</div><div class="followup ${answers[q.id]&&answers[q.id]!=="no"?"show":""}" id="follow-${q.id}"><label for="detail-${q.id}">${esc(q.follow||"Please provide details if known.")}</label><textarea id="detail-${q.id}" placeholder="Add details if known">${esc(followups[q.id]||"")}</textarea><div class="hint">MRI staff will clarify and assess this information.</div></div></div>`;});
+ out+=`</div></section>`;
+ });
+ out+=`<section class="card"><div class="qnum">SECTION 4</div><h2>Implant or metal location</h2><p class="muted">Tap all relevant body regions. Selected areas will be highlighted.</p><div class="bodygrid"><div class="bodyfigure"><svg viewBox="0 0 150 275" role="img" aria-label="Clickable front-facing body diagram">
+ <ellipse class="part" data-part="head" tabindex="0" role="button" aria-label="Head" cx="75" cy="24" rx="17" ry="20"/><path class="part" data-part="eyes" tabindex="0" role="button" aria-label="Eyes and face" d="M62 23 Q75 17 88 23 L87 34 Q75 42 63 34Z"/><path class="part" data-part="neck" tabindex="0" role="button" aria-label="Neck" d="M67 43 L83 43 L84 58 L66 58Z"/><path class="part" data-part="chest" tabindex="0" role="button" aria-label="Chest" d="M55 57 Q75 49 95 57 L103 91 L91 111 L59 111 L47 91Z"/><path class="part" data-part="abdomen" tabindex="0" role="button" aria-label="Abdomen" d="M59 111 L91 111 L88 145 L62 145Z"/><path class="part" data-part="pelvis" tabindex="0" role="button" aria-label="Pelvis" d="M62 145 L88 145 L94 169 L56 169Z"/><path class="part" data-part="rightShoulder" tabindex="0" role="button" aria-label="Right shoulder" d="M53 58 L43 62 L35 78 L46 85 L57 72Z"/><path class="part" data-part="leftShoulder" tabindex="0" role="button" aria-label="Left shoulder" d="M97 58 L107 62 L115 78 L104 85 L93 72Z"/><path class="part" data-part="rightArm" tabindex="0" role="button" aria-label="Right arm" d="M35 78 L46 85 L34 127 L25 151 L17 147 L25 118Z"/><path class="part" data-part="leftArm" tabindex="0" role="button" aria-label="Left arm" d="M115 78 L104 85 L116 127 L125 151 L133 147 L125 118Z"/><path class="part" data-part="rightHand" tabindex="0" role="button" aria-label="Right hand" d="M17 147 L25 151 L22 165 L13 163 L10 156Z"/><path class="part" data-part="leftHand" tabindex="0" role="button" aria-label="Left hand" d="M125 151 L133 147 L140 156 L137 163 L128 165Z"/><path class="part" data-part="rightLeg" tabindex="0" role="button" aria-label="Right thigh and leg" d="M56 169 L74 169 L70 219 L65 251 L54 251 L52 217Z"/><path class="part" data-part="leftLeg" tabindex="0" role="button" aria-label="Left thigh and leg" d="M76 169 L94 169 L98 217 L96 251 L85 251 L80 219Z"/><path class="part" data-part="rightFoot" tabindex="0" role="button" aria-label="Right foot" d="M54 251 L65 251 L66 261 L49 263 L44 259Z"/><path class="part" data-part="leftFoot" tabindex="0" role="button" aria-label="Left foot" d="M85 251 L96 251 L106 259 L101 263 L84 261Z"/>
+ </svg><div class="legend">Front view · Tap a body region</div></div><div><h3>Selected body areas</h3><div class="partlist" id="partList"></div><label class="fieldlabel" for="bodyDetails">Implant / metal details and exact location</label><textarea id="bodyDetails" placeholder="e.g. left knee replacement in 2021; metal fragment near right eye">${esc(answers.bodyDetails||"")}</textarea><label class="checkline"><input id="declaration" type="checkbox" ${answers.declaration?"checked":""}><span>Patient confirms answers are correct to the best of their knowledge and will discuss uncertainty with MRI staff.</span></label><div class="hint">The diagram records body regions, not precise anatomical coordinates. Staff should confirm the location.</div></div></div></section>`;
+ host.innerHTML=out;
+ if(!answers.screenDate){const d=new Date();$("screenDate").value=`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,"0")}-${String(d.getDate()).padStart(2,"0")}`;}
+ ["patientName","caseNo","screenDate","age","sex","weight","occupation","lmp"].forEach(id=>{const el=$(id);el.addEventListener("input",()=>answers[id]=el.value);el.addEventListener("change",()=>answers[id]=el.value);});
+ questions.forEach(q=>{
+ document.querySelectorAll(`input[name="${q.id}"]`).forEach(r=>r.addEventListener("change",()=>{answers[q.id]=r.value;$("follow-"+q.id).classList.toggle("show",r.value!=="no");}));
+ const ta=$("detail-"+q.id);if(ta)ta.addEventListener("input",()=>followups[q.id]=ta.value);
+ });
+ $("bodyDetails").addEventListener("input",e=>answers.bodyDetails=e.target.value);$("declaration").addEventListener("change",e=>answers.declaration=e.target.checked);
+ document.querySelectorAll("#singlePageForm [data-part]").forEach(el=>{const toggle=()=>{const id=el.dataset.part;selectedParts.has(id)?selectedParts.delete(id):selectedParts.add(id);drawSelected();};el.addEventListener("click",toggle);el.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();toggle();}});});
+ drawSelected();
+}
+function drawSelected(){document.querySelectorAll("#singlePageForm [data-part]").forEach(el=>el.classList.toggle("selected",selectedParts.has(el.dataset.part)));const list=$("partList");if(!list)return;list.innerHTML=[...selectedParts].map(id=>`<span class="pill">${esc(partLabel(id))}<button type="button" aria-label="Remove ${esc(partLabel(id))}" data-remove="${id}">×</button></span>`).join("")||'<span class="muted">No areas selected yet.</span>';list.querySelectorAll("[data-remove]").forEach(b=>b.addEventListener("click",()=>{selectedParts.delete(b.dataset.remove);drawSelected();}));}
+function showSummary(){
+ answers.declaration=$("declaration").checked;
+ const yes=questions.filter(q=>answers[q.id]==="yes"),unsure=questions.filter(q=>answers[q.id]==="unsure"),missing=questions.filter(q=>!answers[q.id]);
+ let html=`<p><strong>Patient:</strong> ${esc(answers.patientName||"")} &nbsp; <strong>Case no:</strong> ${esc(answers.caseNo||"")} &nbsp; <strong>Date:</strong> ${esc(answers.screenDate||"")}</p><p><strong>Age:</strong> ${esc(answers.age||"—")} &nbsp; <strong>Sex:</strong> ${esc(answers.sex||"—")} &nbsp; <strong>Weight:</strong> ${esc(answers.weight||"—")}</p><p><strong>Selected body areas:</strong> ${[...selectedParts].map(partLabel).map(esc).join(", ")||"None selected"}</p><p><strong>Implant / metal details:</strong> ${esc(answers.bodyDetails||"Not provided")}</p><div class="resultbox"><span class="status">NOT CLEARED FOR MRI</span><ul>`;
+ if(yes.length)html+=`<li><strong>Yes responses:</strong> ${yes.map(q=>esc(q.q)+(followups[q.id]?` — ${esc(followups[q.id])}`:"")).join("; ")}</li>`;
+ if(unsure.length)html+=`<li><strong>Unsure responses:</strong> ${unsure.map(q=>esc(q.q)+(followups[q.id]?` — ${esc(followups[q.id])}`:"")).join("; ")}</li>`;
+ if(missing.length)html+=`<li><strong>Unanswered:</strong> ${missing.map(q=>esc(q.q)).join("; ")}</li>`;
+ if(!yes.length&&!unsure.length&&!missing.length)html+="<li>All listed safety questions answered No. Staff verification is still required.</li>";
+ html+="</ul></div>";
+ $("patientSummary").innerHTML=html;$("staffAlerts").innerHTML=html;buildPrint(html);$("summary").classList.remove("hidden");$("staffReview").classList.remove("hidden");$("summary").scrollIntoView({behavior:"smooth"});
+}
+function buildPrint(summaryHtml){$("printContent").innerHTML=summaryHtml+`<hr><p><strong>Technologist / nurse reviewer:</strong> ${esc($("staffName").value)} &nbsp; <strong>Doctor:</strong> ${esc($("doctorName").value)}</p><p><strong>Review notes:</strong> ${esc($("staffNotes").value)}</p><p><strong>Assessment status recorded:</strong> ${esc($("disposition").value)}</p><p><strong>Patient declaration:</strong> ${answers.declaration?"Checked":"Not checked"}</p>`;}
+$("reviewBtn").addEventListener("click",()=>{if(!String(answers.patientName||"").trim()){alert("Please enter the patient name.");$("patientName").focus();return;}showSummary();});
+$("printAllBtn").addEventListener("click",()=>{if(!String(answers.patientName||"").trim()){alert("Please enter the patient name before printing.");return;}showSummary();buildPrint($("patientSummary").innerHTML);window.print();});
+$("clearBtn").addEventListener("click",()=>{if(confirm("Clear all patient answers from this page?")){answers={};followups={};selectedParts.clear();$("summary").classList.add("hidden");$("staffReview").classList.add("hidden");renderSinglePage();window.scrollTo({top:0,behavior:"smooth"});}});
+$("staffBtn").addEventListener("click",()=>{$("staffReview").classList.remove("hidden");$("staffReview").scrollIntoView({behavior:"smooth"});});
+$("editBtn").addEventListener("click",()=>{ $("summary").classList.add("hidden");$("staffReview").classList.add("hidden");$("patientFlow").scrollIntoView({behavior:"smooth"});});
+$("staffPrintBtn").addEventListener("click",()=>{buildPrint($("patientSummary").innerHTML);window.print();});
+$("backSummaryBtn").addEventListener("click",()=>{$("staffReview").classList.add("hidden");$("summary").scrollIntoView({behavior:"smooth"});});
+["staffName","doctorName","staffNotes","disposition"].forEach(id=>$(id).addEventListener("input",()=>buildPrint($("patientSummary").innerHTML)));
+$("staffConfirmed").addEventListener("change",()=>{});
+renderSinglePage();
+</script></body></html>
